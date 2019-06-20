@@ -90,7 +90,6 @@ app
 			});//EO statistics			
 		});// EO db.article
 	})// EO /article
-
 	.get('/forum/index/:id/delete', db.product_delete);
 //------------------------------------------------------------------------------------/
 //-------------------- Page de récupération des infos utilisateur --------------------/

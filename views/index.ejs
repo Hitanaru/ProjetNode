@@ -66,6 +66,7 @@
 								<% for(var i = (topics.length-1) ; i >= 0 ; i--) {
 									topic = topics[i];  
 									var dateTopic = topic.date;%>
+									<a href="/forum/index/<%=topic._id %>/delete">Delete</a>
 									<a href="/forum/papers/<%=topic.title %>">			   		 	
 										<section class=" article">
 											<article class="article_topic">
