@@ -72,7 +72,24 @@ app
 		});// EO db.sujets()
 	})// EO /index
 
+//------------------------------------------------------------------------------------/
+//----------------------- Page Admin -----------------------------------/
+//------------------------------------------------------------------------------------/
+	.get('/forum/admin', function(req, res) {
 
+		req.session.adr_ip = ip.address();
+		req.session.sujet = false;
+		req.session.user_connect = user_connect;
+
+		db.topics(function(topics){			
+			db.statistics(function(data){
+
+				res.render('admin.ejs',{topics : topics, session : req.session, statistics : data });
+			
+			});// EO statistics			
+		});// EO db.sujets()
+	})// EO /index
+	
 //------------------------------------------------------------------------------------/
 //------------------------- Page d'affichage des articles ----------------------------/
 //------------------------------------------------------------------------------------/
@@ -90,7 +107,7 @@ app
 			});//EO statistics			
 		});// EO db.article
 	})// EO /article
-	.get('/forum/index/:id/delete', db.product_delete);
+	.get('/forum/admin/:id/delete', db.product_delete);
 //------------------------------------------------------------------------------------/
 //-------------------- Page de récupération des infos utilisateur --------------------/
 //------------------------------------------------------------------------------------/	

@@ -126,7 +126,7 @@ module.exports.papers = papers;
 exports.product_delete = function (req, res) {
     topicModel.findByIdAndRemove(req.params.id, function (err) {
         if (err) return (err);
-        res.redirect('/forum/index');
+        res.redirect('/forum/admin');
     })
 };
 
