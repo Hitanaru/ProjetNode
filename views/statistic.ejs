@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<article id="stat">
+	<%
+		var dateNow = new Date();
+		var paperMC = statistics.paper_more_comment;
+		var last_paper = statistics.last_paper;
+		var last_paper_date = 	last_paper.date;
+	%>
+	<div class="info_users">
+		<h4 id="date_now">Aujourd'hui nous sommes le : <%=dateNow.getDate()%>/<%=dateNow.getMonth()+1%>/<%=dateNow.getFullYear()%></h4>
+		<h5 id="nbT_topics">Nombre de sujets ouverts: </br> <%=statistics.nbT_topics %> </h5>
+		<h5 id="nbT_papers">Nombre d'article écrits:</br> <%=statistics.nbT_papers %> </h5>
+		<h5 id="user_connect">	<% if(session.user_connect < 2 && session.user_connect > 0) { %>
+									1 utilsateur est connecté.
+								<% } else if(session.user_connect > 1) { %>
+									<%=session.user_connect %> Utilsateurs connectés.
+								<% } else { %>
+									Aucun n'utilsateur n'est connecté.
+								<% } %></h4>
+	
+		<h5 id="last_user">Dernier utilisateur inscrit:</br> <%=statistics.last_user %> </h5>
+	</div>
+		
+
+
+	<section class="info_article">
+		<h4>Article le plus commenté:</h4>
+		<% if (paperMC.topic != 0) { %>
+		<h5>titre: <%=paperMC.title %></h5>
+		<% } %>
+		<h5>sujet: <%=paperMC.topic %></h5>
+		<h5>nombre de commentaires : <%=paperMC.nt_comment %></h5>
+		<a href="/forum/papers/<%=paperMC.topic%>" class="voir_article">Voir l'article</a>
+	</section>
+	<h4 id="last_paper_title"> Dernier article posté: </h4>
+
+	<section class="last_article">
+		<h5><%=last_paper.title %></h5>
+		<article>
+			<p><%=last_paper.content %></p>	
+		</article>
+		<aside>
+			<% if (last_paper != "") { %>
+			ecrit le <%=last_paper_date.getDate()%>/<%=last_paper_date.getMonth()+1%>/<%=last_paper_date.getFullYear()%> par <%=last_paper.author %></br>
+			<a href="/forum/papers/<%=last_paper.topic%>"> Voir l'article</a>
+			<% } %>
+			</aside>
+	</section>
+</article> <!-- EO info -->

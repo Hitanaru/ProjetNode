@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Forum developpeurs Inscrption</title>
+		<link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+		<link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet"  href="http://<%=session.adr_ip%>:8080/css/style.css">
+
+
+	</head>
+
+	<body>
+			<%- include('header') %>
+			<div class="page_inscription">
+				<form id="form_signin" action="/forum/new_user" method="post">
+						<h2 class="title_signin">Inscription</h2>
+						<div class="form_inscription">
+						<div class="ligne-inscription">
+							<div class="col1-inscription">
+								<label class="label_username">Votre pseudo</label>
+							</div>
+							<div class="col2-inscription">
+								<input class="input_username" type="text" name="username" required autocomplete ="off"/>	
+							</div>
+						</div>
+						<div class="ligne-inscription">
+							<div class="col1-inscription">
+								<label class="label_mail">adresse mail:</label>
+							</div>
+							<div class="col2-inscription">
+								<input class="input_mail" type="email" name="email" required autocomplete ="off"/>
+							</div>
+						</div>
+						<div class="ligne-inscription">
+							<div class="col1-inscription">
+								<label class="label_mdp">mot de passe</label>
+							</div>
+							<div class="col2-inscription">
+								<input class="input_mdp" type="password" name="password" required/>
+							</div>
+						</div>
+						<div class="ligne-inscription">
+							<div class="col1-inscription">
+								<label class="label_vmdp">verification du mot de passe</label>
+							</div>
+							<div class="col2-inscription">
+								<input class="input_vmdp" type="password" name="vpassword" required/>
+							</div>
+						</div>
+						<div class="ligne-inscription">
+							<div class="col1-inscription"></div>
+							<div class="col2-inscription">
+								<input class="submit_signin" type="submit" value="Inscription" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<%- include('footer') %>
+	</body>
+</html>

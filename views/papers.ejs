@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title><%= session.topic%></title>
+		<link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+		<link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		
+
+	</head>
+	<body>
+		<div id="page">
+					<%- include('header') %>
+					<%if(!session.connection){%>
+						<div class="col-md-12 title-background">
+							<label id="title_login" >Veuilliez vous connecter pour ajouter un nouveau sujet ou des commentaires</label>
+						</div>
+			<div class="container-fluid">
+					
+					<% } %>
+
+					
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-8 page-papers">
+									<section class="paper" id="add_paper">
+											<div class="add_papers">
+												<%if(session.connection){%>
+													<form class="new_paper" action="/forum/add_paper/<%=session.topic%>" method="post">
+														<p class="ajout_article">Ajouter un nouvel article</p>
+														<div class="ligne">
+															<div class="col1">
+																<label id="label_paper">Titre de l'article</label>
+															</div>
+															<div class="col2">
+																<input id="input_paper" type="text" name="title" maxlength="50" autocomplete ="off" required />
+															</div>
+														</div>
+														<div class="ligne">
+															<div class="col1">
+																<label id="label_paper">Article</label>
+															</div>
+															<div class="col2">
+																<textarea id="textarea_paper" name="paper" required autocomplete ="off" placeholder="ecrire ici le contenu de votre article" rows="5" cols="30"></textarea>
+															</div>
+														</div>
+														<div class="ligne">
+															<div class="col1">
+															</div>
+															<div class="col2">
+																<input id="submit_paper" type="submit" value="envoyer" required/>
+															</div>
+														</div>
+													</form>	
+												<%}%>
+											</div>
+										</section>
+								<div id="content">
+									<h2 id="h2_topic"><%= session.topic%></h2>
+										<div id="papers">
+											<% 	var datePaper;
+												for(var i = (papers.length-1) ; i >= 0 ; i--) {
+												paper = papers[i];
+												comment = paper.comment;
+												datePaper = paper.date;%>
+											%>
+											<% if (paper != "") { %>
+											<section class="paper">
+												<article class="article_paper">
+													<h6 class="paper_info">
+														<span class="paper_author"><%= paper.author %></span><span class="paper_date"><%=datePaper.getDate()%>/<%=datePaper.getMonth()+1%>/<%=datePaper.getFullYear()%> à <%=datePaper.getHours()%> h <%=datePaper.getMinutes()%></span>
+													</h6>
+													<h4 class="paper_title"><%=paper.title %> </h4>
+													<p class="paper_content"> <%=paper.content %> </p>
+												</article>
+												<aside class="aside_paper">
+													<div class="comment">
+														<p class=comments>Commentaires</p>
+													</div>
+													<%comment.forEach(function(comment) {
+														 var dateCom = comment.date;
+													%>
+														<div class="article_comment" >
+															<h6><span class="comment_author"><%=comment.author %></span><span class="comment_date"><%=dateCom.getDate()%>/<%=dateCom.getMonth()+1%>/<%=dateCom.getFullYear()%> à <%=dateCom.getHours()%> h <%=dateCom.getMinutes()%></span></h6>
+															<p class="comment_content"> <%=comment.content %> </p>
+														</div>
+													<%});%>
+												</aside>
+											<%} %>
+												<div class="add_comment">
+														<%if(session.connection){%>
+														<form class="new_comment" action="/forum/comment/<%=paper.title%>" method="post">
+															<div class="ligne1-comment">
+																<div class="col1-comment">
+																		<label class="label_comment">Ajouter un nouveau commentaire </label>
+																</div>
+																<div class="col2-comment">
+																	<textarea class="textarea_comment" name="content" required autocomplete ="off" rows="3" cols="50"></textarea>
+																</div>
+															</div>
+															<div class="ligne">
+																<div class="col1-comment"></div>
+																<div class="col2-comment"><input class="submit_comment" type="submit" value="envoyer" /></div>
+															</div>
+														</form>
+													<% } %> <!-- EO if/else -->
+												</div>
+											</section>	<!-- EO article -->
+											<% } %> <!-- EO for -->
+										</div><!-- EO papers -->
+									</div><!-- EO content -->
+								</div> <!-- EO col-md-8 -->
+								<div class="col-md-4 statistics">
+										<%- include('statistic') %>
+								</div><!-- EO col-md-4 -->
+							</div> <!-- EO row -->
+						</div> <!-- EO col-md-12-->
+					</div> <!-- EO row-->
+				</div><!-- EO container-fluid page-papers-->
+			<%- include('footer') %>
+		</div><!-- EO page -->
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Forum developpeur info utilisateur </title>
+		<link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+		<link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+		
+	</head>
+
+	<body>
+		<div id="page">
+
+			 <%- include('header') %> 
+
+			 <div id="user_info">
+
+			 	<h2 id="user_name"><%=session.username %></h2> 
+			 	<h4 id="user_mail"><%=session.email%></h4>
+			 	
+			 	<form id="update_user_mail" method="post" action="/forum/mail_update/">
+			 		<label>Modifier votre adresse email</label>
+			 		<input type="text" name="email" required>
+			 		<input type="submit" value="Modifier">
+			 	</form>
+			 	<form id="update_user_password" method="post" action="/forum/password_update/">
+			 		<label>Modifier votre Mot de passe</label>
+			 		<input type="password" name="password" required>
+			 		<input type="password" name="vpassword" required>
+			 		<input type="submit" value="Modifier">
+
+			 	</form>
+			 </div>
+	
+			<%- include('footer') %>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Forum developpeurs acueil</title>
+			<link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+			<link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div id="page">
+			<%- include('header') %>
+			<%if(!session.connection){%>
+			<div class="container-fluid page-article">
+				<div class="row">
+					<div class="col-md-12 title-background">
+						<label id="title_login" >Veuilliez vous connecter pour ajouter un nouveau topic</label>
+			<%} else{%>
+					<!--------------------------- formulaire de nouveau sujet ------------------------------>
+						<section class="topics-form">
+							<aside class="aside_new_topic">
+									<p class="ajout_topic">Ajouter un nouveau topic</p>
+									<form id="new_topic" action="/forum/add_topic" method="post">
+										<div class="ligne">
+											<div class="col1">
+												<label>Titre du topic:</label>
+											</div>
+											<div class="col2">
+												<input type="text" name="title_topic" required maxlength="20" autocomplete ="off"/>
+											</div>
+										</div>
+										<div class="ligne">
+											<div class="col1">
+												<label>Titre de l'article:</label>
+											</div>
+											<div class="col2">
+												<input type="text" name="title_paper" required maxlength="20" autocomplete ="off"/>
+											</div>
+										</div>
+										<div class="ligne">
+											<div class="col1">
+												<label>Article:</label>
+											</div>
+											<div class="col2">
+												<textarea id="textarea_article-topic" name="paper" required autocomplete ="off" ></textarea>    
+											</div>
+										</div>
+										<div class="ligne">
+											<div class="col1">
+											</div>
+											<div class="col2">
+												<input type="submit" value="envoyer" />    
+											</div>
+										</div>
+									</form>
+								</asde>
+							<%}%>
+						</section>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 article-container">
+						<div class="row">
+							<div class="col-md-1">
+							</div>
+							<div class="col-md-10">
+								<% for(var i = (topics.length-1) ; i >= 0 ; i--) {
+									topic = topics[i];  
+									var dateTopic = topic.date;%>
+									<a href="/forum/papers/<%=topic.title %>">			   		 	
+										<section class=" article">
+											<article class="article_topic">
+												<h3 class="h3_sujet"><%=topic.title %></h3>
+											</article>
+											<aside class="aside_topic">
+												<%= topic.author%> </br>
+												sujet ouvert le <%=dateTopic.getDate()%>/<%=dateTopic.getMonth()+1%>/<%=dateTopic.getFullYear()%>	  
+											</aside>
+										</section>
+									</a>
+								<% } %>
+							</div>
+							<div class="col-md-1">
+							</div>
+						</div>
+					</div>
+							<div class="col-md-4 d-flex justify-content-center statistics">
+									<!----><%- include('statistic') %>
+							</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 d-flex justify-content-center retour_container">
+						<a id="retour" href="#page">Retour en haut de la page</a>
+					</div>
+				</div>
+			</div>
+			<%- include('footer') %>
+		</div>
+	</body>
+</html>

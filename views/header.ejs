@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<head>
+	<!-- device-width pour responsive adapter a la taille de l'écrand -->
+	<!--<link rel="stylesheet" media="screen and (min-width: 1280px)" href="http://<%=session.adr_ip%>:8080/css/style_pc.css">
+	<link rel="stylesheet" media="screen and (max-width: 1279px)" href="http://<%=session.adr_ip%>:8080/css/style_tablet.css">
+	<link rel="stylesheet" media="screen and (max-width: 959px)" href="http://<%=session.adr_ip%>:8080/css/style_tablette-smartphone.css">
+	<link rel="stylesheet" media="screen and (max-width: 500px)" href="http://<%=session.adr_ip%>:8080/css/style_smartphone.css">-->
+	<link rel="stylesheet"  href="http://<%=session.adr_ip%>:8080/css/style.css">
+	
+	<link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+	<link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+
+	<% if(session.error){
+		var error_message = session.error;
+	 %>
+		<script >
+			var error_message = '<%=error_message%>';
+			alert(error_message);
+		</script>
+	<% } session.error = undefined;  	%>
+
+</head> 
+<header>
+	<div class="container header-container">
+		<div class="row">
+			<div class="col-md-2">
+				<a id="logo_header" title="Retour à l'accueil" href="/forum/index"><img id="logo" src="http://<%=session.adr_ip%>:8080/img/catlogo.png" alt="logo" /></a>
+			</div>
+			<div class="col-md-6">
+				<h1 id="title_header">Miaou Forum</h1>
+			</div>
+			<div class="col-md-4">
+				<div id="login form-group">
+					<%if(!session.connection){%>
+						<form id="login_form" action="/forum/login" method="post">
+							<label id="login_mail">Mail:</label>
+							<input class="email form-control input-sm" type="email" name="email" aria-label="Small" required autocomplete ="off">
+							<label id="login_password">Password:</label>
+							<input class="pass form-control input-sm" type="password" name="password" aria-label="Small" required autocomplete ="off">
+							<input class="valid_login" type="submit" value="connexion">
+							<a href="/forum/signin" id="signin" title="Inscription">Inscription</a>
+						</form>
+					<%} else{%>
+						<h3 id="username"><a  href="/forum/report"><%=session.username%></a></h3>
+						<a id="logout" href="/forum/logout" title="Déconnection">Déconnexion</a>
+					<%}%>
+				</div> <!-- EO login -->
+			</div>
+		</div>
+	</div>
+</header>
+
+

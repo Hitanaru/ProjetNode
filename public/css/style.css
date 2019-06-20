@@ -1,0 +1,292 @@
+/*
+	/------------------------------------	Feuille de style general a tous les formats ----------------------------/
+*/
+
+body{
+	margin: 0;
+	padding: 0;
+}
+/*
+   /------------------------------------ Header ------------------------------------/
+*/
+header{
+	background-color: grey;
+}
+
+.header-container{
+	padding: 20px 0 20px 0;
+}
+#logo{
+	padding-top: 20px;
+	height:100px;
+	padding-left: 4 0px;
+}
+
+
+#title_login{
+	color: white;
+	padding: 5px;
+	font-size: 1.2em;
+	border: solid lightgrey 1px;
+	border-radius: 5px;
+}
+#title_header{
+	padding-top: 40px;
+}
+
+.title-background
+{
+	width: 100%;
+	padding: 7px 0 0 0;
+	background-color: white;
+	text-align: center;
+	background-color: black;
+}
+
+/*
+       /---------------------------------- Topic Form ------------------------------------/
+*/
+.topics-form{
+	background-color: lightgrey;
+	color: black;
+	padding: 30px 0 30px 0;
+}
+
+
+.ligne{
+	display: flex;
+}
+
+.col1{
+	text-align: end;
+	width: 50%;
+	padding-right: 2em;
+}
+
+.col2{
+	width: 50%;
+}
+
+.ajout_topic{
+	text-align: center;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+/*
+      /----------------------------------- Topic Index ---------------------------------/
+*/
+.article-container{
+	background-color: rgba(176, 184, 188, 1);
+	padding-top: 20px;
+}
+
+.article{
+	background-color: white;
+	border: solid;
+	padding: 20px;
+	margin: 10px 30px 10px 0;
+	border-radius: 10px;
+}
+
+/*
+	  /---------------------------------- Statistics ----------------------------------/
+*/
+.statistics{
+	background-color: grey;
+	color: white;
+	padding: 30px;
+}
+
+.info_users{
+	background-color: lightgrey;
+	border: black solid 2px;
+	color: grey;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 25px;
+}
+
+.info_article{
+	background-color: lightgrey;
+	border: black solid 2px;
+	color: grey;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.info_article a{
+	text-decoration: none;
+	color: black;
+}
+
+.info_article a:hover{
+	color: blue;
+}
+
+.last_article{
+	background-color: lightgrey;
+	border: black solid 2px;
+	color: grey;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.last_article a{
+	text-decoration: none;
+	color: black;
+}
+
+.last_article a:hover{
+	color: blue;
+}
+
+/*
+      /-------------------------------- Page papers et comments -----------------------------/
+*/
+.page-papers{
+	background-color: lightblue;
+	padding-top: 30px;
+}
+
+.article_paper, .article_comment{
+	background-color: white;
+	border: 1px solid grey;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+.paper_content{
+	text-align: justify;
+}
+
+.paper_author, .comment_author{
+	color: green;
+	margin-right: 10px;
+}
+
+.paper_date, .comment_date{
+	color: lightgrey;
+	font-size: 0.8em;
+}
+
+.comments{
+	margin-top: 15px;
+	border: double 4px black;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+#h2_topic{
+	text-align: center;
+}
+
+
+.ligne1-comment{
+	display: flex;
+	margin-top: 20px;
+}
+.col1-comment{
+	width: 30%;
+	padding-left: 10px;
+}
+
+.col2-comment{
+	width: 70%;
+}
+
+.new_comment{
+	margin-bottom: 15px;
+}
+/*
+        /------------------------------- Page Inscription -------------------------------/
+*/
+.page_inscription{
+	background-color: lightgrey;
+	padding-bottom: 100px;
+}
+
+.title_signin{
+	text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+	padding: 50px 0 10px 0;
+}
+
+.form_inscription{
+	background-color: grey;
+	color: white;
+	padding: 100px 0 100px 0;
+	border: solid black 0.7px;
+	border-radius: 20px;
+	width: 35%;
+	margin: auto;
+}
+
+.ligne-inscription{
+	display: flex;
+}
+
+.col1-inscription{
+	text-align: end;
+	width: 50%;
+	padding-right: 2em;
+}
+
+.col2-inscription{
+	width: 50%;
+}
+
+/*
+        /--------------------------- Page Footer -----------------------/
+*/
+.page-footer{
+	background-color: #3273db;
+}
+
+.page-footer a{
+	text-decoration: none;
+	color: white;
+}
+
+.page-footer a:hover{
+	color: blue;
+}
+
+/*
+       /------------------------- retour page haut ---------------------------/
+*/
+
+.retour_container{
+	background-color: black;
+}
+
+#retour {
+	text-decoration: none;
+	color: white;
+}
+
+#retour:hover{
+	color: grey;
+}
+
+/*
+     /---------------------------- Media Queries ----------------------------/
+*/
+
+@media (max-width: 1100px) {
+	.ligne-inscription{
+		display: flex;
+		flex-direction: column;
+	}
+	.col1-inscription{
+		width: 100%;
+		text-align: center;
+	}
+	.col2-inscription{
+		width: 100%;
+		text-align:center;
+	}
+}
